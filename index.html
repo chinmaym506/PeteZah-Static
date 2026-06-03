@@ -296,6 +296,40 @@
       if(slides.length){slides[0].classList.add('active');setInterval(function(){slides[cur].classList.remove('active');cur=(cur+1)%slides.length;slides[cur].classList.add('active');},3000);}
     }
 
+    /* intercept game/app links — fetch from GitHub and open in about:blank */
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[href*="petezah.netlify.app/static/embed#/storage/ag/"]');
+      if (!a) return;
+      e.preventDefault();
+
+      /* extract game name from embed#/storage/ag/g/gamename/ */
+      var hash = a.href.split('#')[1] || '';
+      var gameName = hash.replace(/\/+$/, '').split('/').pop();
+      if (!gameName) return;
+
+      var rawBase = 'https://raw.githubusercontent.com/PeteZah-Games/PeteZahStatic/main/storage/ag/g/' + gameName + '/';
+      var gameUrl = rawBase + 'index.html';
+
+      /* open window synchronously so popup blocker allows it */
+      var w = window.open('', '_blank');
+      if (!w) return;
+      w.document.write('<!DOCTYPE html><html><head><style>body{margin:0;background:#000;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh}</style></head><body><div>Loading...</div></body></html>');
+      w.document.close();
+
+      fetch(gameUrl)
+        .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function(html) {
+          /* inject base tag so relative assets resolve against GitHub raw */
+          var based = html.replace(/(<head[^>]*>)/i, '$1<base href="' + rawBase + '">');
+          w.document.open();
+          w.document.write(based);
+          w.document.close();
+        })
+        .catch(function(err) {
+          w.document.body.innerHTML = '<div style="color:#f44;padding:40px">Failed to load game: ' + err.message + '</div>';
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
       /* fallback save in case script ran before DOM was ready */
       if (!homeHTML) homeHTML = document.getElementById('page-content').innerHTML;
