@@ -22,6 +22,7 @@
     .image-slide{display:none}.image-slide.active{display:block}.image-shuffler{transition:transform 0.3s ease}.image-shuffler img{width:100%;border-radius:15px}.image-title{color:#fff;text-align:center;margin-top:8px;font-weight:600}
     .header-area{display:block !important;position:fixed !important;top:0 !important;left:0 !important;right:0 !important;z-index:9999 !important;background-color:#1a1c21 !important;height:70px !important;box-shadow:0 2px 15px rgba(0,0,0,0.6) !important}
     .header-area .main-nav .nav{display:inline-flex !important}
+    #page-loading{display:none;text-align:center;padding:80px;color:#fff;}
   </style>
 </head>
 <body style="background:linear-gradient(#000000,#05021f);padding-top:80px;">
@@ -40,24 +41,12 @@
     <div class="main-button" style="text-align:center;"><a href="https://discord.gg/arcgZTV9zX">Join Discord</a></div>
   </div>
 
-  <div class="particles">
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var c = document.querySelector('.particles');
-        for (var i = 0; i < 25; i++) {
-          var p = document.createElement('div'); p.className = 'particle';
-          p.style.left = Math.random()*100+'vw'; p.style.top = Math.random()*100+'vh';
-          p.style.animationDelay = Math.random()*10+'s'; p.style.animationDuration=(5+Math.random()*10)+'s';
-          c.appendChild(p);
-        }
-      });
-    </script>
-  </div>
+  <div class="particles"></div>
 
   <header class="header-area header-sticky">
     <div class="container"><div class="row"><div class="col-12">
       <nav class="main-nav">
-        <a href="index.html" class="logo"><img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" style="width:50px;height:50px;" alt="PeteZah"></a>
+        <a href="#" onclick="loadPage('home',event)" class="logo"><img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" style="width:50px;height:50px;" alt="PeteZah"></a>
         <div class="search-input">
           <form id="search" action="https://duckduckgo.com/" target="_blank">
             <input type="text" placeholder="Type Something" name="q" />
@@ -65,109 +54,113 @@
           </form>
         </div>
         <ul class="nav">
-          <li><a class="active" href="index.html">Home</a></li>
-          <li><a href="g.html">Games</a></li>
-          <li><a href="a.html">Apps</a></li>
-          <li><a href="p.html">Proxy</a></li>
-          <li><a href="profile.html">Settings <img src="https://petezah.netlify.app/storage/assets/images/profile-header.jpg" alt=""></a></li>
+          <li><a class="active" href="#" onclick="loadPage('home',event)">Home</a></li>
+          <li><a href="#" onclick="loadPage('games',event)">Games</a></li>
+          <li><a href="#" onclick="loadPage('apps',event)">Apps</a></li>
+          <li><a href="#" onclick="loadPage('proxy',event)">Proxy</a></li>
+          <li><a href="#" onclick="loadPage('profile',event)">Settings <img src="https://petezah.netlify.app/storage/assets/images/profile-header.jpg" alt=""></a></li>
         </ul>
         <a class="menu-trigger"><span>Menu</span></a>
       </nav>
     </div></div></div>
   </header>
 
-  <div class="container" style="z-index:1;">
-    <div class="row"><div class="col-lg-12"><div class="page-content">
+  <div id="page-content">
 
-      <div class="main-banner" style="animation:fade-in-top 1s;">
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="header-text">
-              <h6 style="text-align:center;">The next gen gaming site.</h6>
-              <h1 style="text-align:center;margin:-10px;animation:fade-in-top 0.6s ease-in-out;">
-                Welcome to<br>
-                <span style="cursor:text;background:linear-gradient(to right,#40e0d0,#0096FF,#40e0d0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
-                  <span class="typewrite" data-period="2000" data-type='["Pete Zah Games.","beautiful.","vibrant.","prosperous.","welcoming.","peaceful.","stable.","thriving.","amazing.","resilient.","friendly.","flourishing.","sustainable."]'>
-                    <span class="wrap"></span>
-                  </span>
-                </span>
-              </h1>
-              <br><br><br>
-              <div class="main-button" style="text-align:center;"><a href="g.html">Start Gaming</a></div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="image-shuffler" style="margin-right:50px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-              <div class="image-slide active"><a href="iframe.html?url=/storage/ag/g/slope/"><img src="https://petezah.netlify.app/storage/ag/g/slope/IMG_5256.jpeg" alt="Slope"><div class="image-title">Slope</div></a></div>
-              <div class="image-slide"><a href="iframe.html?url=/storage/ag/g/ragdoll-archers/"><img src="https://petezah.netlify.app/storage/images/main/ragdoll.jpg" alt="Ragdoll Archers"><div class="image-title">Ragdoll Archers</div></a></div>
-              <div class="image-slide"><a href="iframe.html?url=/storage/ag/g/racesurvival/"><img src="https://petezah.netlify.app/storage/ag/g/racesurvival/logo.jpeg" alt="Race Survival"><div class="image-title">Race Survival</div></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="container" style="z-index:1;">
+      <div class="row"><div class="col-lg-12"><div class="page-content">
 
-      <div class="most-popular">
-        <div class="row"><div class="col-lg-12">
-          <div class="heading-section"><h4><em>Most Popular</em> Right Now</h4></div>
+        <div class="main-banner" style="animation:fade-in-top 1s;">
           <div class="row">
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/polytrack/"><div class="item"><img src="https://petezah.netlify.app/storage/ag/g/polytrack/splash.png" style="width:120px;height:120px;" alt=""><h4>Polytrack<br><span>Car</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/smashyroad"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/smashy.jpg" style="width:120px;height:120px;" alt=""><h4>Smashy<br><span>Car</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/ragdoll-archers"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/ragdoll.jpg" style="width:120px;height:120px;" alt=""><h4>Ragdoll<br><span>Aim</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=https://foodstars.io"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/brawlstars1.jpg" style="width:120px;height:120px;" alt=""><h4>Brawl<br><span>Skill</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/slither"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/slitherio.jpg" style="width:120px;height:120px;" alt=""><h4>Slither<br><span>io</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/slope"><div class="item"><img src="https://petezah.netlify.app/storage/ag/g/slope/IMG_5256.jpeg" style="width:120px;height:120px;" alt=""><h4>Slope<br><span>skill</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/yohoho/"><div class="item"><img src="https://petezah.netlify.app/storage/ag/g/yohoho/IMG_5302.jpeg" style="width:120px;height:120px;" alt=""><h4>Yohoho<br><span>io</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="iframe.html?url=/storage/ag/g/stickman-hook/"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/stickmanhook.jpg" style="width:120px;height:120px;" alt=""><h4>Hook<br><span>skill</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
-            <div class="col-lg-12"><div class="main-button"><a href="g.html">Discover Popular</a></div></div>
+            <div class="col-lg-7">
+              <div class="header-text">
+                <h6 style="text-align:center;">The next gen gaming site.</h6>
+                <h1 style="text-align:center;margin:-10px;animation:fade-in-top 0.6s ease-in-out;">
+                  Welcome to<br>
+                  <span style="cursor:text;background:linear-gradient(to right,#40e0d0,#0096FF,#40e0d0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">
+                    <span class="typewrite" data-period="2000" data-type='["Pete Zah Games.","beautiful.","vibrant.","prosperous.","welcoming.","peaceful.","stable.","thriving.","amazing.","resilient.","friendly.","flourishing.","sustainable."]'>
+                      <span class="wrap"></span>
+                    </span>
+                  </span>
+                </h1>
+                <br><br><br>
+                <div class="main-button" style="text-align:center;"><a href="#" onclick="loadPage('games',event)">Start Gaming</a></div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="image-shuffler" style="margin-right:50px;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+                <div class="image-slide active"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/slope/"><img src="https://petezah.netlify.app/storage/ag/g/slope/IMG_5256.jpeg" alt="Slope"><div class="image-title">Slope</div></a></div>
+                <div class="image-slide"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/ragdoll-archers/"><img src="https://petezah.netlify.app/storage/images/main/ragdoll.jpg" alt="Ragdoll Archers"><div class="image-title">Ragdoll Archers</div></a></div>
+                <div class="image-slide"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/racesurvival/"><img src="https://petezah.netlify.app/storage/ag/g/racesurvival/logo.jpeg" alt="Race Survival"><div class="image-title">Race Survival</div></a></div>
+              </div>
+            </div>
           </div>
-        </div></div>
-      </div><br><br>
-
-    </div></div></div>
-  </div>
-
-  <div class="container">
-    <div class="row"><div class="col-lg-12"><div class="page-content">
-      <div class="gaming-library">
-        <div class="col-lg-12">
-          <div class="heading-section"><h4><em>New Games</em> Library</h4></div>
-          <div class="item"><ul>
-            <li><img src="https://petezah.netlify.app/storage/ag/g/slope2/splash.png" alt="" class="templatemo-item"></li>
-            <li><h4>Slope 2</h4><span>Skill</span></li>
-            <li><h4>Date Added</h4><span>12/24/2024</span></li>
-            <li><h4>Hours Played</h4><span>104 H 22 Mins</span></li>
-            <li><h4>Currently</h4><span>Playable</span></li>
-            <li><div class="main-border-button"><a href="iframe.html?url=/storage/ag/g/slope2/">Play</a></div></li>
-          </ul></div>
-          <div class="item"><ul>
-            <li><img src="https://petezah.netlify.app/storage/images/main/csgo.jpg" alt="" class="templatemo-item"></li>
-            <li><h4>CSGO Clicker</h4><span>Gambling</span></li>
-            <li><h4>Date Added</h4><span>12/24/2024</span></li>
-            <li><h4>Hours Played</h4><span>85 H 52 Mins</span></li>
-            <li><h4>Currently</h4><span>Playable</span></li>
-            <li><div class="main-border-button"><a href="iframe.html?url=/storage/ag/g/csgoclicker">Play</a></div></li>
-          </ul></div>
-          <div class="item last-item"><ul>
-            <li><img src="https://petezah.netlify.app/storage/images/main/fakefortnight.jpg" alt="" class="templatemo-item"></li>
-            <li><h4>Fortnite</h4><span>Shooting</span></li>
-            <li><h4>Date Added</h4><span>12/12/2024</span></li>
-            <li><h4>Hours Played</h4><span>154 H 14 Mins</span></li>
-            <li><h4>Currently</h4><span>Playable</span></li>
-            <li><div class="main-border-button"><a href="iframe.html?url=/storage/ag/g/fortnight">Play</a></div></li>
-          </ul></div>
         </div>
-        <div class="col-lg-12"><div class="main-button"><a href="g.html">View Games</a></div></div>
-      </div>
-    </div></div></div>
-  </div>
 
-  <br><br><br><br><br>
+        <div class="most-popular">
+          <div class="row"><div class="col-lg-12">
+            <div class="heading-section"><h4><em>Most Popular</em> Right Now</h4></div>
+            <div class="row">
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/polytrack/"><div class="item"><img src="https://petezah.netlify.app/storage/ag/g/polytrack/splash.png" style="width:120px;height:120px;" alt=""><h4>Polytrack<br><span>Car</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/smashyroad"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/smashy.jpg" style="width:120px;height:120px;" alt=""><h4>Smashy<br><span>Car</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/ragdoll-archers"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/ragdoll.jpg" style="width:120px;height:120px;" alt=""><h4>Ragdoll<br><span>Aim</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#https://foodstars.io"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/brawlstars1.jpg" style="width:120px;height:120px;" alt=""><h4>Brawl<br><span>Skill</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/slither"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/slitherio.jpg" style="width:120px;height:120px;" alt=""><h4>Slither<br><span>io</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/slope"><div class="item"><img src="https://petezah.netlify.app/storage/ag/g/slope/IMG_5256.jpeg" style="width:120px;height:120px;" alt=""><h4>Slope<br><span>skill</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/yohoho/"><div class="item"><img src="https://petezah.netlify.app/storage/ag/g/yohoho/IMG_5302.jpeg" style="width:120px;height:120px;" alt=""><h4>Yohoho<br><span>io</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-3 col-sm-6" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/stickman-hook/"><div class="item"><img src="https://petezah.netlify.app/storage/images/main/stickmanhook.jpg" style="width:120px;height:120px;" alt=""><h4>Hook<br><span>skill</span></h4><ul><li><i class="fa fa-star"></i></li><li><i class="fa fa-download"></i></li></ul></div></a></div>
+              <div class="col-lg-12"><div class="main-button"><a href="#" onclick="loadPage('games',event)">Discover Popular</a></div></div>
+            </div>
+          </div></div>
+        </div><br><br>
+
+      </div></div></div>
+    </div>
+
+    <div class="container">
+      <div class="row"><div class="col-lg-12"><div class="page-content">
+        <div class="gaming-library">
+          <div class="col-lg-12">
+            <div class="heading-section"><h4><em>New Games</em> Library</h4></div>
+            <div class="item"><ul>
+              <li><img src="https://petezah.netlify.app/storage/ag/g/slope2/splash.png" alt="" class="templatemo-item"></li>
+              <li><h4>Slope 2</h4><span>Skill</span></li>
+              <li><h4>Date Added</h4><span>12/24/2024</span></li>
+              <li><h4>Hours Played</h4><span>104 H 22 Mins</span></li>
+              <li><h4>Currently</h4><span>Playable</span></li>
+              <li><div class="main-border-button"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/slope2/">Play</a></div></li>
+            </ul></div>
+            <div class="item"><ul>
+              <li><img src="https://petezah.netlify.app/storage/images/main/csgo.jpg" alt="" class="templatemo-item"></li>
+              <li><h4>CSGO Clicker</h4><span>Gambling</span></li>
+              <li><h4>Date Added</h4><span>12/24/2024</span></li>
+              <li><h4>Hours Played</h4><span>85 H 52 Mins</span></li>
+              <li><h4>Currently</h4><span>Playable</span></li>
+              <li><div class="main-border-button"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/csgoclicker">Play</a></div></li>
+            </ul></div>
+            <div class="item last-item"><ul>
+              <li><img src="https://petezah.netlify.app/storage/images/main/fakefortnight.jpg" alt="" class="templatemo-item"></li>
+              <li><h4>Fortnite</h4><span>Shooting</span></li>
+              <li><h4>Date Added</h4><span>12/12/2024</span></li>
+              <li><h4>Hours Played</h4><span>154 H 14 Mins</span></li>
+              <li><h4>Currently</h4><span>Playable</span></li>
+              <li><div class="main-border-button"><a href="https://petezah.netlify.app/static/embed#/storage/ag/g/fortnight">Play</a></div></li>
+            </ul></div>
+          </div>
+          <div class="col-lg-12"><div class="main-button"><a href="#" onclick="loadPage('games',event)">View Games</a></div></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <br><br><br><br><br>
+
+  </div><!-- #page-content -->
 
   <footer class="footer">
     <div class="footer-container"><div class="footer-row">
       <div class="footer-col"><h4>company</h4><ul><li><a href="pages/footer/about.html">about us</a></li><li><a href="pages/footer/news.html">news</a></li><li><a href="pages/footer/legal.html">privacy policy</a></li><li><a href="pages/footer/dmca.html">dmca takedown</a></li></ul></div>
       <div class="footer-col"><h4>get help</h4><ul><li><a href="pages/footer/faq.html">FAQ</a></li><li><a href="pages/footer/status.html">status</a></li><li><a href="pages/footer/team.html">developers</a></li><li><a href="pages/footer/contact.html">contact</a></li></ul></div>
-      <div class="footer-col"><h4>pages</h4><ul><li><a href="index.html">home</a></li><li><a href="g.html">games</a></li><li><a href="a.html">apps</a></li><li><a href="p.html">proxy</a></li></ul></div>
+      <div class="footer-col"><h4>pages</h4><ul><li><a href="#" onclick="loadPage('home',event)">home</a></li><li><a href="#" onclick="loadPage('games',event)">games</a></li><li><a href="#" onclick="loadPage('apps',event)">apps</a></li><li><a href="#" onclick="loadPage('proxy',event)">proxy</a></li></ul></div>
       <div class="footer-col"><h4>follow us</h4><div class="social-links"><a href="https://discord.gg/arcgZTV9zX"><i class="fab fa-discord"></i></a><a href="https://twitter.com/PeteZahGames"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
     </div></div>
   </footer>
@@ -181,27 +174,105 @@
   <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
   <script>
-    /* Typewriter */
+    const PAGES = {
+      games:   'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/g.html',
+      apps:    'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/a.html',
+      proxy:   'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/p.html',
+      profile: 'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/profile.html'
+    };
+
+    let homeHTML = '';
+
+    function setActiveNav(page) {
+      document.querySelectorAll('.header-area .nav a').forEach(a => a.classList.remove('active'));
+      const map = {home:0, games:1, apps:2, proxy:3, profile:4};
+      const links = document.querySelectorAll('.header-area .nav a');
+      if (links[map[page]]) links[map[page]].classList.add('active');
+    }
+
+    function execScripts(container) {
+      container.querySelectorAll('script').forEach(function(old) {
+        var s = document.createElement('script');
+        Array.from(old.attributes).forEach(function(a){ s.setAttribute(a.name, a.value); });
+        s.textContent = old.textContent;
+        old.parentNode.replaceChild(s, old);
+      });
+    }
+
+    async function loadPage(page, e) {
+      if (e) e.preventDefault();
+      setActiveNav(page);
+      window.scrollTo(0, 0);
+
+      var container = document.getElementById('page-content');
+
+      if (page === 'home') {
+        container.innerHTML = homeHTML;
+        execScripts(container);
+        initHome();
+        return;
+      }
+
+      container.innerHTML = '<div style="text-align:center;padding:80px;color:#fff;"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
+
+      try {
+        var res = await fetch(PAGES[page]);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var html = await res.text();
+
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(html, 'text/html');
+
+        /* pull page-specific inline styles from <head> */
+        var styles = '';
+        doc.head.querySelectorAll('style').forEach(function(s){ styles += s.outerHTML; });
+
+        /* strip elements we don't need from body */
+        var skip = ['header','footer','#js-preloader','.js-preloader','.particles','.announcement-modal'];
+        skip.forEach(function(sel){ doc.body.querySelectorAll(sel).forEach(function(el){ el.remove(); }); });
+
+        container.innerHTML = styles + doc.body.innerHTML;
+        execScripts(container);
+
+      } catch(err) {
+        container.innerHTML = '<div style="text-align:center;padding:60px;color:#ff4444;">Failed to load page: ' + err.message + '</div>';
+      }
+    }
+
+    /* ---- home page JS (typewriter + image shuffler + particles) ---- */
     class TxtType {
       constructor(el,toRotate,period){this.toRotate=toRotate;this.el=el;this.loopNum=0;this.period=parseInt(period,10)||2000;this.txt='';this.isDeleting=false;this.tick();}
       tick(){var i=this.loopNum%this.toRotate.length,full=this.toRotate[i];this.txt=this.isDeleting?full.substring(0,this.txt.length-1):full.substring(0,this.txt.length+1);this.el.innerHTML='<span class="wrap">'+this.txt+'</span>';var delta=200-Math.random()*100;if(this.isDeleting)delta/=2;if(!this.isDeleting&&this.txt===full){delta=this.period;this.isDeleting=true;}else if(this.isDeleting&&this.txt===''){this.isDeleting=false;this.loopNum++;delta=500;}setTimeout(()=>this.tick(),delta);}
     }
-    document.addEventListener('DOMContentLoaded',function(){
-      Array.from(document.getElementsByClassName('typewrite')).forEach(function(el){var t=el.getAttribute('data-type'),p=el.getAttribute('data-period');if(t)new TxtType(el,JSON.parse(t),p);});
+
+    function initHome() {
+      /* typewriter */
+      Array.from(document.getElementsByClassName('typewrite')).forEach(function(el){
+        var t=el.getAttribute('data-type'),p=el.getAttribute('data-period');
+        if(t) new TxtType(el,JSON.parse(t),p);
+      });
       var css=document.createElement('style');css.innerHTML='.typewrite>.wrap{border-right:0.06em solid #a04cff}';document.body.appendChild(css);
-      /* Image shuffler */
+      /* image shuffler */
       var slides=document.querySelectorAll('.image-slide'),cur=0;
       if(slides.length){slides[0].classList.add('active');setInterval(function(){slides[cur].classList.remove('active');cur=(cur+1)%slides.length;slides[cur].classList.add('active');},3000);}
-      /* Particles */
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      /* save home content before anything modifies it */
+      homeHTML = document.getElementById('page-content').innerHTML;
+
+      /* particles */
       var c=document.querySelector('.particles');
       for(var i=0;i<25;i++){var p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';p.style.animationDelay=Math.random()*10+'s';p.style.animationDuration=(5+Math.random()*10)+'s';c.appendChild(p);}
-    });
-    (function($){"use strict";
-      $(window).on('load',function(){$('#js-preloader').addClass('loaded');});
-      if($('.wow').length)$(window).on('load',function(){new WOW({boxClass:'wow',animateClass:'animated',offset:20,mobile:true,live:true}).init();});
-      if($('.menu-trigger').length)$('.menu-trigger').on('click',function(){$(this).toggleClass('active');$('.header-area .nav').slideToggle(200);});
-    })(window.jQuery);
-    $(document).ready(function(){
+
+      initHome();
+
+      (function($){"use strict";
+        $(window).on('load',function(){$('#js-preloader').addClass('loaded');});
+        if($('.wow').length)$(window).on('load',function(){new WOW({boxClass:'wow',animateClass:'animated',offset:20,mobile:true,live:true}).init();});
+        if($('.menu-trigger').length)$('.menu-trigger').on('click',function(){$(this).toggleClass('active');$('.header-area .nav').slideToggle(200);});
+      })(window.jQuery);
+
       var b=$("#announcement-banner"),ck="announcementClosed",ct="announcementClosedTime",now=new Date().getTime();
       if(!localStorage.getItem(ck)||(localStorage.getItem(ct)&&now>localStorage.getItem(ct)))b.fadeIn(1000);
       $("#announcement-close").click(function(){b.fadeOut();localStorage.setItem(ck,"true");localStorage.setItem(ct,now+30*60*1000);});
