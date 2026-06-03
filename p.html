@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>PeteZah | Proxy</title>
+  <link rel="icon" type="icon/x-icon" href="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://petezah.netlify.app/storage/assets/css/main.css">
+  <meta name="description" content="Pete Zah, game on" />
+  <style>
+    .footer-container{max-width:1170px;margin:auto}.footer-row{display:flex;flex-wrap:wrap}.footer{background-color:#24262b;padding:70px 0}.footer-col{width:25%;padding:0 15px}.footer-col h4{font-size:18px;color:#fff;text-transform:capitalize;margin-bottom:35px;font-weight:500;position:relative}.footer-col h4::before{content:'';position:absolute;left:0;bottom:-10px;background-color:#e91e63;height:2px;width:50px}.footer-col ul li:not(:last-child){margin-bottom:10px}.footer-col ul li a{font-size:16px;text-transform:capitalize;color:#bbbbbb;text-decoration:none;font-weight:300;display:block;transition:all 0.3s ease}.footer-col ul li a:hover{color:#fff;padding-left:8px}.footer-col .social-links a{display:inline-block;height:40px;width:40px;background-color:rgba(255,255,255,0.2);margin:0 10px 10px 0;text-align:center;line-height:40px;border-radius:50%;color:#fff;transition:all 0.5s ease}.footer-col .social-links a:hover{color:#24262b;background-color:#fff}
+    @media(max-width:767px){.footer-col{width:50%;margin-bottom:30px}}@media(max-width:574px){.footer-col{width:100%}}
+    .iframe-container{position:relative;width:100%;height:80vh}.iframe-container iframe{width:100%;height:100%;border:none;border-radius:10px}.controls{text-align:right;margin-top:8px}.controls .icon{cursor:pointer;color:#fff;font-size:20px}select.sigma{background:#141414;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:16px;margin-bottom:16px;width:100%}
+    .header-area{display:block !important;position:fixed !important;top:0 !important;left:0 !important;right:0 !important;z-index:9999 !important;background-color:#1a1c21 !important;height:70px !important;box-shadow:0 2px 15px rgba(0,0,0,0.6) !important}
+    .header-area .main-nav .nav{display:inline-flex !important}
+  </style>
+</head>
+<body style="background-color:#000;padding-top:80px;">
+
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <header class="header-area header-sticky">
+    <div class="container"><div class="row"><div class="col-12">
+      <nav class="main-nav">
+        <a href="index.html" class="logo"><img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" style="width:50px;height:50px;" alt="PeteZah"></a>
+        <div class="search-input">
+          <form id="search" action="https://duckduckgo.com/" target="_blank">
+            <input type="text" placeholder="Type Something" name="q" />
+            <i class="fa fa-search"></i>
+          </form>
+        </div>
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="g.html">Games</a></li>
+          <li><a href="a.html">Apps</a></li>
+          <li><a class="active" href="p.html">Proxy</a></li>
+          <li><a href="profile.html">Settings <img src="https://petezah.netlify.app/storage/assets/images/profile-header.jpg" alt=""></a></li>
+        </ul>
+        <a class="menu-trigger"><span>Menu</span></a>
+      </nav>
+    </div></div></div>
+  </header>
+
+  <div class="container"><div class="row"><div class="col-lg-12">
+    <select class="sigma" onchange="document.getElementById('proxyFrame').src=this.value">
+      <option value="static_index.html">PeteProxy</option>
+      <option value="p1.html">PeteProxy 2</option>
+      <option value="skipschool.html">Proxies List</option>
+    </select>
+    <div class="iframe-container">
+      <iframe sandbox="allow-scripts allow-pointer-lock allow-forms allow-same-origin allow-downloads" id="proxyFrame" src="static_index.html"></iframe>
+    </div>
+    <div class="controls">
+      <i class="fas fa-expand icon" onclick="(function(){var f=document.getElementById('proxyFrame');if(f.requestFullscreen)f.requestFullscreen();else if(f.webkitRequestFullscreen)f.webkitRequestFullscreen();})()"></i>
+    </div>
+  </div></div></div>
+
+  <br><br><br><br><br>
+
+  <footer class="footer">
+    <div class="footer-container"><div class="footer-row">
+      <div class="footer-col"><h4>company</h4><ul><li><a href="pages/footer/about.html">about us</a></li><li><a href="pages/footer/news.html">news</a></li><li><a href="pages/footer/legal.html">privacy policy</a></li><li><a href="pages/footer/dmca.html">dmca takedown</a></li></ul></div>
+      <div class="footer-col"><h4>get help</h4><ul><li><a href="pages/footer/faq.html">FAQ</a></li><li><a href="pages/footer/status.html">status</a></li><li><a href="pages/footer/team.html">developers</a></li><li><a href="pages/footer/contact.html">contact</a></li></ul></div>
+      <div class="footer-col"><h4>pages</h4><ul><li><a href="index.html">home</a></li><li><a href="g.html">games</a></li><li><a href="a.html">apps</a></li><li><a href="p.html">proxy</a></li></ul></div>
+      <div class="footer-col"><h4>follow us</h4><div class="social-links"><a href="https://discord.gg/arcgZTV9zX"><i class="fab fa-discord"></i></a><a href="https://twitter.com/PeteZahGames"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+    </div></div>
+  </footer>
+  <footer><div class="container"><div class="row"><div class="col-lg-12">
+    <p>Copyright &copy; 2025 <a href="https://bio.petezahgames.com">PeteZah Games</a> Company. All rights reserved.</p>
+  </div></div></div></footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function($){"use strict";
+      $(window).on('load',function(){$('#js-preloader').addClass('loaded');});
+      if($('.menu-trigger').length)$('.menu-trigger').on('click',function(){$(this).toggleClass('active');$('.header-area .nav').slideToggle(200);});
+    })(window.jQuery);
+  </script>
+</body>
+</html>

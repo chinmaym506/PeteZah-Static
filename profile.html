@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>PeteZah | Settings</title>
+  <link rel="icon" type="icon/x-icon" href="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://petezah.netlify.app/storage/assets/css/main.css">
+  <meta name="description" content="Pete Zah, game on" />
+  <style>
+    .footer-container{max-width:1170px;margin:auto}.footer-row{display:flex;flex-wrap:wrap}.footer{background-color:#24262b;padding:70px 0}.footer-col{width:25%;padding:0 15px}.footer-col h4{font-size:18px;color:#fff;text-transform:capitalize;margin-bottom:35px;font-weight:500;position:relative}.footer-col h4::before{content:'';position:absolute;left:0;bottom:-10px;background-color:#e91e63;height:2px;width:50px}.footer-col ul li:not(:last-child){margin-bottom:10px}.footer-col ul li a{font-size:16px;text-transform:capitalize;color:#bbbbbb;text-decoration:none;font-weight:300;display:block;transition:all 0.3s ease}.footer-col ul li a:hover{color:#fff;padding-left:8px}.footer-col .social-links a{display:inline-block;height:40px;width:40px;background-color:rgba(255,255,255,0.2);margin:0 10px 10px 0;text-align:center;line-height:40px;border-radius:50%;color:#fff;transition:all 0.5s ease}.footer-col .social-links a:hover{color:#24262b;background-color:#fff}
+    @media(max-width:767px){.footer-col{width:50%;margin-bottom:30px}}@media(max-width:574px){.footer-col{width:100%}}
+    .header-area{display:block !important;position:fixed !important;top:0 !important;left:0 !important;right:0 !important;z-index:9999 !important;background-color:#1a1c21 !important;height:70px !important;box-shadow:0 2px 15px rgba(0,0,0,0.6) !important}
+    .header-area .main-nav .nav{display:inline-flex !important}
+    /* Settings sections */
+    .gaming-library.profile-library { margin-bottom: 20px; }
+    .gaming-library.profile-library .col-lg-12 { padding: 25px; background: #111; border-radius: 15px; }
+    .gaming-library.profile-library h1 { font-size: 20px; color: #fff; margin-bottom: 10px; }
+    .gaming-library.profile-library p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 20px; }
+    .splitbutton { width:48%; height:35px; background:#252525; color:#fff; border-radius:10px; border:0; outline:1px solid #ffffff17; cursor:pointer; margin-top:5px; transition:background 0.3s; }
+    .splitbutton:hover { background:#444; }
+    .buttonreg { width:100%; height:35px; background:#252525; color:#fff; border-radius:10px; border:0; outline:1px solid #ffffff17; cursor:pointer; margin:5px 0; transition:background 0.3s; }
+    .buttonreg:hover { background:#444; }
+    .sigma-select { width:100%; padding:10px; background:#252525; color:#fff; border-radius:10px; border:none; font-size:14px; margin-bottom:10px; }
+    .sigma-input { width:100%; padding:10px; background:#252525; color:#fff; border-radius:10px; border:none; font-size:14px; margin-bottom:10px; }
+    .sigma-input::placeholder { color:#666; }
+    .switch { position:relative; display:inline-block; width:55px; height:30px; }
+    .switch .checkbox { opacity:0; width:0; height:0; }
+    .slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:transparent; transition:0.4s; box-shadow:1px 1px 5px 0 #555 inset; }
+    .slider:before { position:absolute; content:''; height:20px; width:20px; left:4px; bottom:4px; background:#555; transition:0.4s; border-radius:50%; }
+    .checkbox:checked+.slider { box-shadow:1px 1px 5px 0 #2a9d8f inset; }
+    .checkbox:checked+.slider:before { transform:translateX(26px); background:#2a9d8f; }
+    .slider.round { border-radius:34px; }
+    #popup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center; }
+    #popupContent { background:#1a1a1a; padding:30px; border-radius:15px; max-width:400px; width:90%; }
+    #popupContent p { color:#fff; margin-bottom:15px; }
+    #success, #success-panic { color:#2a9d8f; margin-top:8px; font-size:13px; }
+    .partner-item { text-align:center; margin-bottom:20px; }
+    .partner-item img { border-radius:23px; width:120px; height:120px; object-fit:cover; transition:transform 0.3s; }
+    .partner-item:hover img { transform:scale(1.1); }
+    .partner-item h4 { color:#fff; font-size:14px; margin-top:8px; }
+  </style>
+</head>
+<body style="background-color:#000;padding-top:80px;">
+
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <header class="header-area header-sticky">
+    <div class="container"><div class="row"><div class="col-12">
+      <nav class="main-nav">
+        <a href="index.html" class="logo"><img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" style="width:50px;height:50px;" alt="PeteZah"></a>
+        <div class="search-input">
+          <form id="search" action="https://duckduckgo.com/" target="_blank">
+            <input type="text" placeholder="Type Something" name="q" />
+            <i class="fa fa-search"></i>
+          </form>
+        </div>
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="g.html">Games</a></li>
+          <li><a href="a.html">Apps</a></li>
+          <li><a href="p.html">Proxy</a></li>
+          <li><a class="active" href="profile.html">Settings <img src="https://petezah.netlify.app/storage/assets/images/profile-header.jpg" alt=""></a></li>
+        </ul>
+        <a class="menu-trigger"><span>Menu</span></a>
+      </nav>
+    </div></div></div>
+  </header>
+
+  <div class="container">
+    <div class="row"><div class="col-lg-12"><div class="page-content">
+
+      <!-- Profile Header -->
+      <div class="row" style="margin-bottom:30px;">
+        <div class="col-lg-4">
+          <img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" alt="" style="border-radius:23px;width:100%;">
+        </div>
+        <div class="col-lg-4 align-self-center">
+          <div class="main-info header-text">
+            <span style="color:#aaa;">PeteZah Games</span>
+            <h4 style="color:#fff;">Settings</h4>
+            <p style="color:#aaa;">We have everything you need. Game on!</p>
+            <br>
+            <p style="color:#aaa;">Your IP Address:<br><br><span id="ip" style="color:#fff;"></span></p>
+            <div class="main-border-button" style="margin-top:15px;">
+              <a href="g.html">Continue Gaming</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 align-self-center">
+          <ul style="list-style:none;padding:0;color:#fff;">
+            <li style="border-bottom:1px solid #333;padding:8px 0;">Pete Zah Stats</li>
+            <li style="border-bottom:1px solid #333;padding:8px 0;">Games <span style="float:right;color:#aaa;">130</span></li>
+            <li style="border-bottom:1px solid #333;padding:8px 0;">Apps <span style="float:right;color:#aaa;">37</span></li>
+            <li style="padding:8px 0;">Proxy Status <span style="float:right;color:#2a9d8f;">Active</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Partners -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <div class="heading-section"><h4><em></em>Partners</h4></div>
+          <div class="row" style="margin-top:20px;">
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://benrogo.net"><img src="https://petezah.netlify.app/storage/images/main/benrogo.png" alt=""><h4>Benrogo</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://flage.site"><img src="https://petezah.netlify.app/storage/images/main/flage.png" alt=""><h4>Camouflage</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://sites.google.com/view/orbiton-arcade/home"><img src="https://petezah.netlify.app/storage/images/main/orbiton.webp" alt=""><h4>Orbiton Games</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://ixl.brunys.site"><img src="https://petezah.netlify.app/storage/images/main/brunys.ico" alt=""><h4>Brunysixlwork</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://ajhmath.org"><img src="https://petezah.netlify.app/storage/images/main/ajh.webp" alt=""><h4>AJH's Vault</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://play.szvy.win"><img src="https://petezah.netlify.app/storage/images/main/szvy.png" alt=""><h4>Szvy Central</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://geometrylearningv3.neocities.org"><img src="https://petezah.netlify.app/storage/images/main/marki.webp" alt=""><h4>Geometry Learn</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://yixboost.nl.eu.org/"><img src="https://petezah.netlify.app/storage/images/main/yixa.webp" alt=""><h4>Yixboost Games</h4></a></div>
+            <div class="col-lg-3 col-sm-6 partner-item"><a href="https://lupinevault.com/"><img src="https://petezah.netlify.app/storage/images/main/lupine.webp" alt=""><h4>Lupine Vault</h4></a></div>
+          </div>
+          <div class="main-button" style="margin-top:10px;"><a href="https://discord.gg/arcgZTV9zX">Discord</a></div>
+        </div>
+      </div>
+
+      <!-- About Blank & Blob -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <h1>About:Blank &amp; Blob Cloaking</h1><br>
+          <p>About:Blank allows you to hide your tab history. An alternative to About:Blank is blob cloaking, which uses temporary data.</p><br>
+          <div style="display:flex;gap:10px;">
+            <button class="splitbutton" onclick="launchAboutBlank()">Launch About:Blank</button>
+            <button class="splitbutton" onclick="launchBlob()">Launch Blob</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Cloaking -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <h1>Tab Cloaking</h1><br>
+          <p>Tab Cloaking cloaks the name of the tab &amp; icon, so your tab stays hidden from sight.</p><br>
+          <select class="sigma-select" id="presetSelect">
+            <option value="petezah">default</option>
+            <option value="ixl">ixl</option>
+            <option value="s">schoology</option>
+            <option value="google">google</option>
+            <option value="googleclassroom">google classroom</option>
+            <option value="googledrive">google drive</option>
+            <option value="chrometab">chrome new tab</option>
+            <option value="gmail">gmail</option>
+            <option value="bing">bing</option>
+            <option value="desmos">desmos calculator</option>
+            <option value="wikipedia">wikipedia</option>
+          </select>
+          <div style="display:flex;gap:10px;">
+            <button class="splitbutton" id="saveButton">Select</button>
+            <button class="splitbutton" id="resetButton">Reset</button>
+          </div>
+          <p id="success" style="display:none;"></p>
+        </div>
+      </div>
+
+      <!-- Panic Key -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <h1>Panic Key</h1><br>
+          <p>Press the selected keybind to go to another site quickly.</p><br>
+          <input class="sigma-input" type="text" id="panicKey" placeholder="Key combo (e.g. Ctrl+Shift+P)">
+          <input class="sigma-input" type="url" id="panicUrl" placeholder="https://www.desmos.com/scientific">
+          <button class="buttonreg" onclick="saveSettings()">Save</button>
+          <p id="success-panic" style="display:none;"></p>
+        </div>
+      </div>
+
+      <!-- Password Protection -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <h1>Password Protection</h1><br>
+          <p>Protect your session with a password.</p><br>
+          <label class="switch">
+            <input class="checkbox passwordYesNo" type="checkbox" id="mySwitch">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Data Manager -->
+      <div class="gaming-library profile-library">
+        <div class="col-lg-12">
+          <h1>Data Manager</h1><br>
+          <button class="buttonreg" id="downloadButton">Export Data</button>
+          <label style="display:block;margin-top:8px;">
+            <span class="buttonreg" style="display:inline-block;line-height:35px;text-align:center;cursor:pointer;">Import Data</span>
+            <input type="file" id="uploadInput" accept=".save" style="display:none;">
+          </label>
+          <p id="uploadStatus" style="margin-top:10px;color:#fff;"></p>
+        </div>
+      </div>
+
+      <!-- Popup for import confirmation -->
+      <div id="popup">
+        <div id="popupContent">
+          <p>Warning: Uploading will overwrite your existing data. Type "CONFIRM" to proceed.</p>
+          <input type="text" id="confirmationText" class="sigma-input">
+          <div style="display:flex;gap:10px;">
+            <button class="splitbutton" id="confirmUpload">Confirm</button>
+            <button class="splitbutton" id="cancelUpload">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </div></div></div>
+  </div>
+
+  <br><br><br><br><br>
+
+  <footer class="footer">
+    <div class="footer-container"><div class="footer-row">
+      <div class="footer-col"><h4>company</h4><ul><li><a href="pages/footer/about.html">about us</a></li><li><a href="pages/footer/news.html">news</a></li><li><a href="pages/footer/legal.html">privacy policy</a></li><li><a href="pages/footer/dmca.html">dmca takedown</a></li></ul></div>
+      <div class="footer-col"><h4>get help</h4><ul><li><a href="pages/footer/faq.html">FAQ</a></li><li><a href="pages/footer/status.html">status</a></li><li><a href="pages/footer/team.html">developers</a></li><li><a href="pages/footer/contact.html">contact</a></li></ul></div>
+      <div class="footer-col"><h4>pages</h4><ul><li><a href="index.html">home</a></li><li><a href="g.html">games</a></li><li><a href="a.html">apps</a></li><li><a href="p.html">proxy</a></li></ul></div>
+      <div class="footer-col"><h4>follow us</h4><div class="social-links"><a href="https://discord.gg/arcgZTV9zX"><i class="fab fa-discord"></i></a><a href="https://twitter.com/PeteZahGames"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+    </div></div>
+  </footer>
+  <footer><div class="container"><div class="row"><div class="col-lg-12" style="color:white;">
+    <p>Copyright &copy; 2025 <a href="https://bio.petezahgames.com" style="color:white;">PeteZah Games</a> Company. All rights reserved.</p>
+  </div></div></div></footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* Preloader */
+    $(window).on('load',function(){$('#js-preloader').addClass('loaded');});
+    if($('.menu-trigger').length)$('.menu-trigger').on('click',function(){$(this).toggleClass('active');$('.header-area .nav').slideToggle(200);});
+
+    /* IP address */
+    fetch('https://api.ipify.org?format=json')
+      .then(r=>r.json()).then(d=>{document.getElementById('ip').textContent=d.ip;})
+      .catch(()=>{document.getElementById('ip').textContent='Unable to retrieve';});
+
+    /* About:Blank / Blob launchers */
+    function launchAboutBlank(){
+      var win=window.open();
+      var iframe=win.document.createElement('iframe');
+      iframe.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;border:none;margin:0;padding:0;';
+      iframe.src=window.location.href;
+      win.document.body.appendChild(iframe);
+      win.document.body.style.overflow='hidden';
+    }
+    function launchBlob(){
+      var url=window.location.href;
+      var html='<html><head><title>Space</title><style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden}iframe{position:fixed;top:0;left:0;width:100%;height:100%;border:none}</style></head><body><iframe src="'+url+'"></iframe></body></html>';
+      var blob=new Blob([html],{type:'text/html'});
+      window.open(URL.createObjectURL(blob));
+    }
+
+    /* Tab cloaking */
+    var tabCloakTitles={petezah:'PeteZah',ixl:'IXL',s:'Schoology',google:'Google',googleclassroom:'Google Classroom',googledrive:'Google Drive',chrometab:'New Tab',gmail:'Gmail',bing:'Bing',desmos:'Desmos',wikipedia:'Wikipedia'};
+    var tabCloakFavicons={petezah:'',ixl:'https://www.ixl.com/favicon.ico',s:'https://www.schoology.com/sites/default/files/favicons/favicon.ico',google:'https://www.google.com/favicon.ico',googleclassroom:'https://classroom.google.com/favicon.ico',googledrive:'https://drive.google.com/favicon.ico',chrometab:'',gmail:'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico',bing:'https://www.bing.com/favicon.ico',desmos:'https://www.desmos.com/assets/img/apps/logo-big.png',wikipedia:'https://en.wikipedia.org/favicon.ico'};
+    function applyCloak(val){
+      if(!val||val==='petezah'){document.title='PeteZah';return;}
+      document.title=tabCloakTitles[val]||'PeteZah';
+      var link=document.querySelector("link[rel*='icon']")||document.createElement('link');
+      link.type='image/x-icon';link.rel='shortcut icon';
+      if(tabCloakFavicons[val])link.href=tabCloakFavicons[val];
+      document.head.appendChild(link);
+    }
+    var storedCloak=localStorage.getItem('tabCloak')||getCookieVal('tabCloakPreset');
+    if(storedCloak){document.getElementById('presetSelect').value=storedCloak;applyCloak(storedCloak);}
+    function getCookieVal(name){var m=document.cookie.match(new RegExp('(?:^|; )'+name+'=([^;]*)'));return m?decodeURIComponent(m[1]):null;}
+    document.getElementById('saveButton').addEventListener('click',function(){
+      var val=document.getElementById('presetSelect').value;
+      localStorage.setItem('tabCloak',val);
+      document.cookie='tabCloakPreset='+val+';expires='+new Date(Date.now()+365*864e5).toUTCString()+';path=/';
+      applyCloak(val);
+      var s=document.getElementById('success');s.textContent='Cloak saved!';s.style.display='block';
+      setTimeout(function(){s.style.display='none';},2000);
+    });
+    document.getElementById('resetButton').addEventListener('click',function(){
+      localStorage.removeItem('tabCloak');
+      document.cookie='tabCloakPreset=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
+      document.getElementById('presetSelect').value='petezah';
+      applyCloak('petezah');
+      var s=document.getElementById('success');s.textContent='Cloak removed.';s.style.display='block';
+      setTimeout(function(){s.style.display='none';},2000);
+    });
+
+    /* Panic key */
+    var keyCombo=new Set();
+    document.getElementById('panicKey').addEventListener('focus',function(){keyCombo.clear();this.value='';});
+    document.addEventListener('keydown',function(e){
+      var inp=document.getElementById('panicKey');
+      if(document.activeElement===inp){e.preventDefault();keyCombo.add(e.key);inp.value=Array.from(keyCombo).join('+');}
+      else{
+        var pk=localStorage.getItem('panicKey'),pu=localStorage.getItem('panicUrl');
+        if(pk&&pu){var keys=pk.split('+');if(keys.every(function(k){return e.key===k||e.ctrlKey&&k==='Control'||e.shiftKey&&k==='Shift';})){window.location.href=pu;}}
+      }
+    });
+    document.addEventListener('keyup',function(e){
+      var inp=document.getElementById('panicKey');
+      if(document.activeElement===inp)keyCombo.delete(e.key);
+    });
+    if(localStorage.getItem('panicKey'))document.getElementById('panicKey').value=localStorage.getItem('panicKey');
+    if(localStorage.getItem('panicUrl'))document.getElementById('panicUrl').value=localStorage.getItem('panicUrl');
+    function saveSettings(){
+      var k=document.getElementById('panicKey').value||'Ctrl+Shift+P';
+      var u=document.getElementById('panicUrl').value||'https://www.desmos.com/scientific';
+      localStorage.setItem('panicKey',k);localStorage.setItem('panicUrl',u);
+      var s=document.getElementById('success-panic');s.textContent='Panic key saved!';s.style.display='block';
+      setTimeout(function(){s.style.display='none';},2000);
+    }
+
+    /* Data manager */
+    document.getElementById('downloadButton').addEventListener('click',function(){
+      var data={localStorage:{},cookies:{}};
+      for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);data.localStorage[k]=localStorage.getItem(k);}
+      document.cookie.split(';').forEach(function(c){var p=c.split('=');if(p[0])data.cookies[p[0].trim()]=decodeURIComponent((p[1]||''));});
+      var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+      a.download='petezah-data.'+new Date().toISOString().split('T')[0]+'.save';a.click();
+    });
+    document.getElementById('uploadInput').addEventListener('change',function(e){
+      var file=e.target.files[0];
+      if(!file)return;
+      document.getElementById('popup').style.display='flex';
+      document.getElementById('confirmUpload').onclick=function(){
+        if(document.getElementById('confirmationText').value==='CONFIRM'){
+          var reader=new FileReader();
+          reader.onload=function(ev){
+            try{
+              var data=JSON.parse(ev.target.result);
+              if(data.localStorage)Object.entries(data.localStorage).forEach(function(e){localStorage.setItem(e[0],e[1]);});
+              document.getElementById('uploadStatus').textContent='Import successful!';
+              document.getElementById('popup').style.display='none';
+            }catch(err){document.getElementById('uploadStatus').textContent='Error: Invalid file.';}
+          };
+          reader.readAsText(file);
+        }else{document.getElementById('uploadStatus').textContent='Error: Type CONFIRM to proceed.';}
+      };
+      document.getElementById('cancelUpload').onclick=function(){document.getElementById('popup').style.display='none';};
+    });
+  </script>
+</body>
+</html>

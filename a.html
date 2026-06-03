@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>PeteZah | Apps</title>
+  <link rel="icon" type="icon/x-icon" href="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://petezah.netlify.app/storage/assets/css/main.css">
+  <meta name="description" content="Pete Zah, game on" />
+  <style>
+    .footer-container{max-width:1170px;margin:auto}.footer-row{display:flex;flex-wrap:wrap}.footer{background-color:#24262b;padding:70px 0}.footer-col{width:25%;padding:0 15px}.footer-col h4{font-size:18px;color:#fff;text-transform:capitalize;margin-bottom:35px;font-weight:500;position:relative}.footer-col h4::before{content:'';position:absolute;left:0;bottom:-10px;background-color:#e91e63;height:2px;width:50px}.footer-col ul li:not(:last-child){margin-bottom:10px}.footer-col ul li a{font-size:16px;text-transform:capitalize;color:#bbbbbb;text-decoration:none;font-weight:300;display:block;transition:all 0.3s ease}.footer-col ul li a:hover{color:#fff;padding-left:8px}.footer-col .social-links a{display:inline-block;height:40px;width:40px;background-color:rgba(255,255,255,0.2);margin:0 10px 10px 0;text-align:center;line-height:40px;border-radius:50%;color:#fff;transition:all 0.5s ease}.footer-col .social-links a:hover{color:#24262b;background-color:#fff}
+    @media(max-width:767px){.footer-col{width:50%;margin-bottom:30px}}@media(max-width:574px){.footer-col{width:100%}}
+    .particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0.2}.particle{position:fixed;width:4.5px;height:4.5px;background:rgba(255,255,255,0.8);border-radius:50%;animation:floatParticle 8s infinite ease-in-out;opacity:0.2}
+    @keyframes floatParticle{0%{transform:translate(0,0);opacity:1}50%{transform:translate(50px,-100px);opacity:0.6}100%{transform:translate(-30px,-200px);opacity:0}}
+    .search-container{text-align:center;margin-bottom:20px}.search-container input{font-family:"Nunito",serif;width:30vw;padding:10px;font-size:16px;border:none;color:#fff;background:#141414;border-radius:50px}.game-container{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}.image-item{position:relative;width:200px;height:170px;overflow:hidden;transition:transform 0.3s;border-radius:10px}.image-item:hover{transform:scale(1.1)}.image-item a{display:block;width:100%;height:100%;text-decoration:none;color:inherit}.image-item img{width:100%;height:100%;object-fit:cover}.label{position:absolute;bottom:0;left:0;right:0;background-color:rgba(0,0,0,0.5);color:white;text-align:center;padding:5px;border-bottom-left-radius:10px;border-bottom-right-radius:10px}
+    .header-area{display:block !important;position:fixed !important;top:0 !important;left:0 !important;right:0 !important;z-index:9999 !important;background-color:#1a1c21 !important;height:70px !important;box-shadow:0 2px 15px rgba(0,0,0,0.6) !important}
+    .header-area .main-nav .nav{display:inline-flex !important}
+  </style>
+</head>
+<body style="background-color:#000;padding-top:80px;">
+
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <div class="particles"></div>
+
+  <header class="header-area header-sticky">
+    <div class="container"><div class="row"><div class="col-12">
+      <nav class="main-nav">
+        <a href="index.html" class="logo"><img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png" style="width:50px;height:50px;" alt="PeteZah"></a>
+        <div class="search-input">
+          <form id="search" action="https://duckduckgo.com/" target="_blank">
+            <input type="text" placeholder="Type Something" name="q" />
+            <i class="fa fa-search"></i>
+          </form>
+        </div>
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="g.html">Games</a></li>
+          <li><a class="active" href="a.html">Apps</a></li>
+          <li><a href="p.html">Proxy</a></li>
+          <li><a href="profile.html">Settings <img src="https://petezah.netlify.app/storage/assets/images/profile-header.jpg" alt=""></a></li>
+        </ul>
+        <a class="menu-trigger"><span>Menu</span></a>
+      </nav>
+    </div></div></div>
+  </header>
+
+  <div class="container"><div class="row"><div class="col-lg-12"><div class="page-content">
+    <div class="live-stream header-text">
+      <div style="margin-top:40px;" class="search-container">
+        <input type="text" id="search-apps" placeholder="Search for YOUR Favorite App.....">
+      </div>
+      <div class="game-container" style="animation:fade-in-bottom 1s;">
+        <div class="image-item" data-label="app request"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfDWiLkFUAcAsVVzb57HFW1xfGY3dSUwbMUhDdinsyESCCYeg/viewform?usp=sf_link"><img src="https://petezah.netlify.app/storage/images/main/googleforms.jpg"><div class="label">App Request</div></a></div>
+        <div class="image-item" data-label="pete ai"><a href="iframe.html?url=/pages/ai.html"><img src="https://petezah.netlify.app/storage/images/logo-png-removebg-preview.png"><div class="label">Pete AI</div></a></div>
+        <div class="image-item" data-label="google"><a href="iframe.html?url=/storage/ag/a/google/"><img src="https://petezah.netlify.app/storage/ag/a/google/IMG_5324.webp"><div class="label">Google</div></a></div>
+        <div class="image-item" data-label="now.gg"><a href="iframe.html?url=/storage/ag/a/nowgg/"><img src="https://petezah.netlify.app/storage/ag/a/nowgg/IMG_5325.png"><div class="label">Now.gg</div></a></div>
+        <div class="image-item" data-label="reddit"><a href="iframe.html?url=/storage/ag/a/reddit/"><img src="https://petezah.netlify.app/storage/ag/a/reddit/IMG_5326.jpeg"><div class="label">Reddit</div></a></div>
+        <div class="image-item" data-label="geforce now"><a href="iframe.html?url=/storage/ag/a/geforce"><img src="https://petezah.netlify.app/storage/images/main/geforce.jpg"><div class="label">GeForce</div></a></div>
+        <div class="image-item" data-label="xbox"><a href="iframe.html?url=/storage/ag/a/xbox/"><img src="https://petezah.netlify.app/storage/ag/a/xbox/IMG_5327.png"><div class="label">Xbox</div></a></div>
+        <div class="image-item" data-label="chatgpt"><a href="iframe.html?url=/storage/ag/a/chatgpt/"><img src="https://petezah.netlify.app/storage/ag/a/chatgpt/IMG_5328.jpeg"><div class="label">ChatGPT</div></a></div>
+        <div class="image-item" data-label="github"><a href="iframe.html?url=/storage/ag/a/github"><img src="https://petezah.netlify.app/storage/images/main/github.jpg"><div class="label">Github</div></a></div>
+        <div class="image-item" data-label="cool math games"><a href="iframe.html?url=/storage/ag/a/coolmathgames/"><img src="https://petezah.netlify.app/storage/ag/a/coolmathgames/IMG_5329.png"><div class="label">Cool Math Games</div></a></div>
+        <div class="image-item" data-label="crazy games"><a href="iframe.html?url=/storage/ag/a/crazygames/"><img src="https://petezah.netlify.app/storage/ag/a/crazygames/IMG_5330.webp"><div class="label">Crazy Games</div></a></div>
+        <div class="image-item" data-label="facebook"><a href="iframe.html?url=/storage/ag/a/facebook/"><img src="https://petezah.netlify.app/storage/ag/a/facebook/IMG_5332.jpeg"><div class="label">Facebook</div></a></div>
+        <div class="image-item" data-label="discord"><a href="iframe.html?url=/storage/ag/a/discord/"><img src="https://petezah.netlify.app/storage/ag/a/discord/IMG_5331.jpeg"><div class="label">Discord</div></a></div>
+        <div class="image-item" data-label="poki"><a href="iframe.html?url=/storage/ag/a/poki/"><img src="https://petezah.netlify.app/storage/ag/a/poki/IMG_5333.png"><div class="label">Poki</div></a></div>
+        <div class="image-item" data-label="tiktok"><a href="iframe.html?url=/storage/ag/a/tiktok/"><img src="https://petezah.netlify.app/storage/ag/a/tiktok/IMG_5335.png"><div class="label">TikTok</div></a></div>
+        <div class="image-item" data-label="snapchat"><a href="iframe.html?url=/storage/ag/a/snapchat/"><img src="https://petezah.netlify.app/storage/ag/a/snapchat/IMG_5334.png"><div class="label">Snapchat</div></a></div>
+        <div class="image-item" data-label="twitch"><a href="iframe.html?url=/storage/ag/a/twitch/"><img src="https://petezah.netlify.app/storage/ag/a/twitch/IMG_5336.png"><div class="label">Twitch</div></a></div>
+        <div class="image-item" data-label="x"><a href="iframe.html?url=/storage/ag/a/x/"><img src="https://petezah.netlify.app/storage/ag/a/x/IMG_5337.png"><div class="label">X</div></a></div>
+        <div class="image-item" data-label="youtube"><a href="iframe.html?url=/storage/ag/a/youtube/"><img src="https://petezah.netlify.app/storage/ag/a/youtube/IMG_5338.webp"><div class="label">YouTube</div></a></div>
+        <div class="image-item" data-label="youtube invidious"><a href="iframe.html?url=/storage/ag/a/invid/"><img src="https://petezah.netlify.app/storage/images/main/invid.png"><div class="label">YouTube Invidious</div></a></div>
+        <div class="image-item" data-label="hd today"><a href="iframe.html?url=/storage/ag/a/hdtoday/"><img src="https://petezah.netlify.app/storage/ag/a/hdtoday/IMG_5342.jpeg"><div class="label">HD Today</div></a></div>
+        <div class="image-item" data-label="aptoid"><a href="iframe.html?url=/storage/ag/a/aptoid/"><img src="https://petezah.netlify.app/storage/ag/a/aptoid/IMG_5343.png"><div class="label">Aptoid</div></a></div>
+        <div class="image-item" data-label="android emulator"><a href="iframe.html?url=/storage/ag/a/android/"><img src="https://petezah.netlify.app/storage/ag/a/android/logo.webp"><div class="label">Android Emulator</div></a></div>
+        <div class="image-item" data-label="emulatorjs"><a href="iframe.html?url=/storage/ag/a/emulatorjs/"><img src="https://petezah.netlify.app/storage/ag/a/emulatorjs/docs/Logo-light.png"><div class="label">EmulatorJS</div></a></div>
+        <div class="image-item" data-label="rumble"><a href="iframe.html?url=/storage/ag/a/rumble"><img src="https://petezah.netlify.app/storage/images/main/rumble.jpg"><div class="label">Rumble</div></a></div>
+        <div class="image-item" data-label="yahoo"><a href="iframe.html?url=/storage/ag/a/yahoo"><img src="https://petezah.netlify.app/storage/images/main/yahoo.jpg"><div class="label">Yahoo</div></a></div>
+        <div class="image-item" data-label="netflix"><a href="iframe.html?url=/storage/ag/a/netflix"><img src="https://petezah.netlify.app/storage/images/main/netflix.jpg"><div class="label">Netflix</div></a></div>
+        <div class="image-item" data-label="hulu"><a href="iframe.html?url=/storage/ag/a/hul"><img src="https://petezah.netlify.app/storage/images/main/hulu.jpg"><div class="label">Hulu</div></a></div>
+        <div class="image-item" data-label="pinterest"><a href="iframe.html?url=/storage/ag/a/pinterest"><img src="https://petezah.netlify.app/storage/images/main/pinterist.jpg"><div class="label">Pinterest</div></a></div>
+        <div class="image-item" data-label="soundcloud"><a href="iframe.html?url=/storage/ag/a/soundcloud"><img src="https://petezah.netlify.app/storage/images/main/soundcloud.jpg"><div class="label">Soundcloud</div></a></div>
+        <div class="image-item" data-label="espn"><a href="iframe.html?url=/storage/ag/a/espn"><img src="https://petezah.netlify.app/storage/images/main/espn.jpg"><div class="label">ESPN</div></a></div>
+        <div class="image-item" data-label="fifa rosters"><a href="iframe.html?url=/storage/ag/a/fifa"><img src="https://petezah.netlify.app/storage/images/main/fifarosters.jpg"><div class="label">Fifa Rosters</div></a></div>
+        <div class="image-item" data-label="vercel"><a href="iframe.html?url=/storage/ag/a/vercel"><img src="https://petezah.netlify.app/storage/images/main/vercel.jpg"><div class="label">Vercel</div></a></div>
+        <div class="image-item" data-label="vscode"><a href="iframe.html?url=/storage/ag/a/vscode"><img src="https://petezah.netlify.app/storage/images/main/vscode.jpg"><div class="label">VsCode</div></a></div>
+        <div class="image-item" data-label="y8games"><a href="iframe.html?url=/storage/ag/a/y8games"><img src="https://petezah.netlify.app/storage/images/main/y8games.jpg"><div class="label">Y8Games</div></a></div>
+        <div class="image-item" data-label="w3school"><a href="iframe.html?url=/storage/ag/a/w3school"><img src="https://petezah.netlify.app/storage/images/main/w3school.jpg"><div class="label">W3School</div></a></div>
+        <div class="image-item" data-label="scratch"><a href="iframe.html?url=/storage/ag/a/scratch"><img src="https://petezah.netlify.app/storage/images/main/scratch.jpg"><div class="label">Scratch</div></a></div>
+        <div class="image-item" data-label="gmail"><a href="iframe.html?url=/storage/ag/a/gmail"><img src="https://petezah.netlify.app/storage/images/main/gmail.jpg"><div class="label">Gmail</div></a></div>
+        <div class="image-item" data-label="google drive"><a href="iframe.html?url=/storage/ag/a/drive"><img src="https://petezah.netlify.app/storage/images/main/drive.jpg"><div class="label">Google Drive</div></a></div>
+      </div>
+    </div>
+  </div></div></div></div>
+  <br><br><br><br><br>
+
+  <footer class="footer">
+    <div class="footer-container"><div class="footer-row">
+      <div class="footer-col"><h4>company</h4><ul><li><a href="pages/footer/about.html">about us</a></li><li><a href="pages/footer/news.html">news</a></li><li><a href="pages/footer/legal.html">privacy policy</a></li><li><a href="pages/footer/dmca.html">dmca takedown</a></li></ul></div>
+      <div class="footer-col"><h4>get help</h4><ul><li><a href="pages/footer/faq.html">FAQ</a></li><li><a href="pages/footer/status.html">status</a></li><li><a href="pages/footer/team.html">developers</a></li><li><a href="pages/footer/contact.html">contact</a></li></ul></div>
+      <div class="footer-col"><h4>pages</h4><ul><li><a href="index.html">home</a></li><li><a href="g.html">games</a></li><li><a href="a.html">apps</a></li><li><a href="p.html">proxy</a></li></ul></div>
+      <div class="footer-col"><h4>follow us</h4><div class="social-links"><a href="https://discord.gg/arcgZTV9zX"><i class="fab fa-discord"></i></a><a href="https://twitter.com/PeteZahGames"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div></div>
+    </div></div>
+  </footer>
+  <footer><div class="container"><div class="row"><div class="col-lg-12">
+    <p>Copyright &copy; 2025 <a href="https://bio.petezahgames.com">PeteZah Games</a> Company. All rights reserved.</p>
+  </div></div></div></footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+      var c=document.querySelector('.particles');
+      for(var i=0;i<25;i++){var p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'vw';p.style.top=Math.random()*100+'vh';p.style.animationDelay=Math.random()*10+'s';p.style.animationDuration=(5+Math.random()*10)+'s';c.appendChild(p);}
+      var input=document.getElementById('search-apps');
+      if(input)input.addEventListener('input',function(){var q=this.value.toLowerCase();document.querySelectorAll('.image-item').forEach(function(item){item.style.display=(item.dataset.label||'').toLowerCase().includes(q)?'':'none';});});
+    });
+    (function($){"use strict";
+      $(window).on('load',function(){$('#js-preloader').addClass('loaded');});
+      if($('.menu-trigger').length)$('.menu-trigger').on('click',function(){$(this).toggleClass('active');$('.header-area .nav').slideToggle(200);});
+    })(window.jQuery);
+  </script>
+</body>
+</html>
