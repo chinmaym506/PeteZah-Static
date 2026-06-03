@@ -205,7 +205,7 @@
       }
     }
 
-    let homeHTML = '';
+    var homeHTML = (document.getElementById('page-content') || {}).innerHTML || '';
 
     function setActiveNav(page) {
       document.querySelectorAll('.header-area .nav a').forEach(a => a.classList.remove('active'));
@@ -297,8 +297,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      /* save home content before anything modifies it */
-      homeHTML = document.getElementById('page-content').innerHTML;
+      /* fallback save in case script ran before DOM was ready */
+      if (!homeHTML) homeHTML = document.getElementById('page-content').innerHTML;
 
       /* particles */
       var c=document.querySelector('.particles');

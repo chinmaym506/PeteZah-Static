@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PeteZah</title>
+</head>
+<body>
+  <div id="root">Loading...</div>
+  <script>
+    fetch('https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/index.html')
+      .then(r => r.text())
+      .then(html => {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+
+        /* inject <head> tags (styles, links, meta) */
+        doc.head.querySelectorAll('link, style, meta').forEach(function(el) {
+          document.head.appendChild(document.adoptNode(el));
+        });
+        document.title = doc.title;
+
+        /* replace body content */
+        document.body.innerHTML = doc.body.innerHTML;
+        document.body.setAttribute('style', doc.body.getAttribute('style') || '');
+
+        /* re-execute scripts */
+        document.body.querySelectorAll('script').forEach(function(old) {
+          var s = document.createElement('script');
+          Array.from(old.attributes).forEach(function(a) { s.setAttribute(a.name, a.value); });
+          s.textContent = old.textContent;
+          old.parentNode.replaceChild(s, old);
+        });
+
+        /* preloader won't auto-dismiss since window.load already fired */
+        var pre = document.getElementById('js-preloader');
+        if (pre) pre.classList.add('loaded');
+      })
+      .catch(function() {
+        document.getElementById('root').textContent = 'Error loading content.';
+      });
+  </script>
+</body>
+</html>
