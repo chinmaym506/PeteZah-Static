@@ -50,18 +50,40 @@
   </header>
 
   <div class="container"><div class="row"><div class="col-lg-12">
-    <select class="sigma" onchange="document.getElementById('proxyFrame').src=this.value">
+    <select class="sigma" onchange="loadProxy(this.value)">
       <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/static_index.html">PeteProxy</option>
       <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/p1.html">PeteProxy 2</option>
       <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/skipschool.html">Proxies List</option>
     </select>
-    <div class="iframe-container">
-      <iframe sandbox="allow-scripts allow-pointer-lock allow-forms allow-same-origin allow-downloads" id="proxyFrame" src="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/static_index.html"></iframe>
-    </div>
-    <div class="controls">
-      <i class="fas fa-expand icon" onclick="(function(){var f=document.getElementById('proxyFrame');if(f.requestFullscreen)f.requestFullscreen();else if(f.webkitRequestFullscreen)f.webkitRequestFullscreen();})()"></i>
-    </div>
+    <div id="proxy-content" style="min-height:80vh;"></div>
   </div></div></div>
+
+  <script>
+    window.loadProxy = async function(url) {
+      var c = document.getElementById('proxy-content');
+      c.innerHTML = '<div style="text-align:center;padding:80px;color:#fff;"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
+      try {
+        var res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+        var styles = '';
+        doc.head.querySelectorAll('style').forEach(function(s){ styles += s.outerHTML; });
+        ['header','footer','#js-preloader','.js-preloader','.particles'].forEach(function(sel){
+          doc.body.querySelectorAll(sel).forEach(function(el){ el.remove(); });
+        });
+        c.innerHTML = styles + doc.body.innerHTML;
+        c.querySelectorAll('script').forEach(function(old){
+          var s = document.createElement('script');
+          Array.from(old.attributes).forEach(function(a){ s.setAttribute(a.name, a.value); });
+          s.textContent = old.textContent;
+          old.parentNode.replaceChild(s, old);
+        });
+      } catch(err) {
+        c.innerHTML = '<div style="text-align:center;padding:60px;color:#ff4444;">Failed to load: ' + err.message + '</div>';
+      }
+    };
+    loadProxy('https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/static_index.html');
+  </script>
 
   <br><br><br><br><br>
 
