@@ -187,6 +187,16 @@
     };
 
     async function loadProxy(url) {
+      /* live: prefix = open petezah live site in about:blank window (needs HTTPS + SW) */
+      if (url.startsWith('live:')) {
+        var liveUrl = url.slice(5);
+        var w = window.open('', '_blank');
+        if (w) {
+          w.document.write('<!DOCTYPE html><html><head><style>*{margin:0;padding:0}html,body,iframe{width:100%;height:100%;border:none;overflow:hidden}</style></head><body><iframe src="' + liveUrl + '" allowfullscreen></iframe></body></html>');
+          w.document.close();
+        }
+        return;
+      }
       var c = document.getElementById('proxy-content');
       c.innerHTML = '<div style="text-align:center;padding:80px;color:#fff;"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
       try {
@@ -239,16 +249,25 @@
 
       if (page === 'proxy') {
         container.innerHTML =
-          '<style>.sigma{background:#141414;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:16px;margin-bottom:16px;width:100%}</style>' +
+          '<style>' +
+          '.sigma{background:#141414;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:16px;margin-bottom:16px;width:100%}' +
+          '.proxy-wrap{position:relative;width:100%;height:80vh}' +
+          '.proxy-wrap iframe{width:100%;height:100%;border:none;border-radius:10px}' +
+          '.proxy-controls{display:flex;align-items:center;gap:10px;margin-bottom:12px}' +
+          '.proxy-controls select{flex:1}' +
+          '.open-btn{white-space:nowrap;background:#e91e63;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:15px;cursor:pointer}' +
+          '.open-btn:hover{background:#c2185b}' +
+          '</style>' +
           '<div class="container"><div class="row"><div class="col-lg-12">' +
-          '<select class="sigma" onchange="loadProxy(this.value)">' +
-          '<option value="' + PROXY_PAGES.pete      + '">PeteProxy</option>' +
-          '<option value="' + PROXY_PAGES.pete2     + '">PeteProxy 2</option>' +
-          '<option value="' + PROXY_PAGES.skipschool + '">Proxies List</option>' +
+          '<div class="proxy-controls">' +
+          '<select class="sigma" id="proxySelect" onchange="document.getElementById(\'proxyFrame\').src=this.value">' +
+          '<option value="https://petezah.netlify.app/static/index.html">PeteProxy</option>' +
+          '<option value="https://petezah.netlify.app/pages/proxy/p1.html">PeteProxy 2</option>' +
           '</select>' +
-          '<div id="proxy-content" style="min-height:80vh;"></div>' +
+          '<button class="open-btn" onclick="(function(){var u=document.getElementById(\'proxySelect\').value;var w=window.open(\'\',\'_blank\');if(w){w.document.write(\'<!DOCTYPE html><html><head><style>*{margin:0;padding:0}html,body,iframe{width:100%;height:100%;border:none;overflow:hidden}</style></head><body><iframe src=\\\'\'+u+\'\\\' allowfullscreen sandbox=\\\'allow-scripts allow-forms allow-same-origin allow-popups\\\'></iframe></body></html>\');w.document.close();}})()">Open in New Tab</button>' +
+          '</div>' +
+          '<div class="proxy-wrap"><iframe id="proxyFrame" src="https://petezah.netlify.app/static/index.html" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe></div>' +
           '</div></div></div>';
-        loadProxy(PROXY_PAGES.pete);
         return;
       }
 
