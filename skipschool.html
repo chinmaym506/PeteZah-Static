@@ -549,8 +549,7 @@
         if (!allData || Object.keys(allData).length === 0) throw new Error('Empty data');
       } catch (err) {
         console.error('Error loading proxies:', err);
-        alert('Failed to load proxies. Please try again later.');
-        selectedOptionText.textContent = 'Error loading';
+        selectedOptionText.textContent = 'Failed to load';
         return;
       }
 

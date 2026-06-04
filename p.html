@@ -51,6 +51,8 @@
 
   <div class="container"><div class="row"><div class="col-lg-12">
     <select class="sigma" onchange="loadProxy(this.value)">
+      <option value="__blank__">GUST Browser (New Tab)</option>
+      <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/GUST.html">GUST Browser</option>
       <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/static_index.html">PeteProxy</option>
       <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/p1.html">PeteProxy 2</option>
       <option value="https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/skipschool.html">Proxies List</option>
@@ -59,30 +61,61 @@
   </div></div></div>
 
   <script>
+    var GUST_URL = 'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/GUST.html';
+    var IFRAME_PROXIES = ['GUST.html'];
     window.loadProxy = async function(url) {
+      if (url === '__blank__') {
+        var res = await fetch(GUST_URL);
+        var html = await res.text();
+        var w = window.open('about:blank');
+        w.document.open();
+        w.document.write(html);
+        w.document.close();
+        document.querySelector('.sigma').value = document.querySelector('.sigma').options[1].value;
+        return;
+      }
       var c = document.getElementById('proxy-content');
       c.innerHTML = '<div style="text-align:center;padding:80px;color:#fff;"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
       try {
         var res = await fetch(url);
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        var doc = new DOMParser().parseFromString(await res.text(), 'text/html');
-        var styles = '';
-        doc.head.querySelectorAll('style').forEach(function(s){ styles += s.outerHTML; });
-        ['header','footer','#js-preloader','.js-preloader','.particles'].forEach(function(sel){
-          doc.body.querySelectorAll(sel).forEach(function(el){ el.remove(); });
-        });
-        c.innerHTML = styles + doc.body.innerHTML;
-        c.querySelectorAll('script').forEach(function(old){
-          var s = document.createElement('script');
-          Array.from(old.attributes).forEach(function(a){ s.setAttribute(a.name, a.value); });
-          s.textContent = old.textContent;
-          old.parentNode.replaceChild(s, old);
-        });
+        var html = await res.text();
+        var useIframe = IFRAME_PROXIES.some(function(name){ return url.indexOf(name) !== -1; });
+        if (useIframe) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          doc.head.querySelectorAll('link, style, meta').forEach(function(el) {
+            document.head.appendChild(document.adoptNode(el));
+          });
+          c.innerHTML = doc.body.innerHTML;
+          c.setAttribute('style', (c.getAttribute('style') || '') + ';' + (doc.body.getAttribute('style') || ''));
+          c.querySelectorAll('script').forEach(function(old) {
+            var s = document.createElement('script');
+            Array.from(old.attributes).forEach(function(a){ s.setAttribute(a.name, a.value); });
+            s.textContent = old.textContent;
+            old.parentNode.replaceChild(s, old);
+          });
+          var pre = document.getElementById('js-preloader');
+          if (pre) pre.classList.add('loaded');
+        } else {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var styles = '';
+          doc.head.querySelectorAll('style').forEach(function(s){ styles += s.outerHTML; });
+          ['header','footer','#js-preloader','.js-preloader','.particles'].forEach(function(sel){
+            doc.body.querySelectorAll(sel).forEach(function(el){ el.remove(); });
+          });
+          c.innerHTML = styles + doc.body.innerHTML;
+          c.querySelectorAll('script').forEach(function(old){
+            var s = document.createElement('script');
+            Array.from(old.attributes).forEach(function(a){ s.setAttribute(a.name, a.value); });
+            s.textContent = old.textContent;
+            old.parentNode.replaceChild(s, old);
+          });
+        }
       } catch(err) {
         c.innerHTML = '<div style="text-align:center;padding:60px;color:#ff4444;">Failed to load: ' + err.message + '</div>';
       }
     };
-    loadProxy('https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/static_index.html');
+    loadProxy('https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/GUST.html');
   </script>
 
   <br><br><br><br><br>

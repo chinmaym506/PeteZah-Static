@@ -186,6 +186,81 @@
       skipschool:'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/skipschool.html'
     };
 
+    var GUST_URL = 'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/GUST.html';
+
+    function switchProxy(val) {
+      var wrap = document.getElementById('proxyWrap');
+      var ss = document.getElementById('skipschool-wrap');
+      var pc = document.getElementById('proxy-content');
+      wrap.style.display = 'none';
+      ss.style.display = 'none';
+      pc.style.display = 'none';
+
+      if (val === 'skipschool') {
+        ss.style.display = 'block';
+        if (!ss.dataset.loaded) {
+          ss.dataset.loaded = '1';
+          ss.innerHTML = '<div style="text-align:center;padding:40px;color:#fff"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
+          fetch(PROXY_PAGES.skipschool)
+            .then(function(r){ return r.text(); })
+            .then(function(html){
+              var doc = new DOMParser().parseFromString(html, 'text/html');
+              var styles = '';
+              doc.head.querySelectorAll('style').forEach(function(s){ styles += s.outerHTML; });
+              ['header','footer','#js-preloader','.js-preloader','.particles'].forEach(function(sel){
+                doc.body.querySelectorAll(sel).forEach(function(el){ el.remove(); });
+              });
+              ss.innerHTML = styles + doc.body.innerHTML;
+              execScripts(ss);
+            })
+            .catch(function(){ ss.innerHTML = '<div style="color:#f44;padding:40px">Failed to load.</div>'; });
+        }
+      } else if (val.indexOf('GUST.html') !== -1) {
+        pc.style.display = 'block';
+        pc.innerHTML = '<div style="text-align:center;padding:80px;color:#fff;"><i class="fas fa-spinner fa-spin fa-2x"></i></div>';
+        fetch(val)
+          .then(function(r){ return r.text(); })
+          .then(function(html){
+            var polyfill = [
+              '<script>',
+              '(function(){',
+              '  function memStore(){var s={};return{getItem:function(k){return s.hasOwnProperty(k)?s[k]:null;},setItem:function(k,v){s[k]=String(v);},removeItem:function(k){delete s[k];},clear:function(){s={};}};};',
+              '  try{localStorage.getItem("");}catch(e){try{Object.defineProperty(window,"localStorage",{value:memStore(),writable:true});Object.defineProperty(window,"sessionStorage",{value:memStore(),writable:true});}catch(e2){}}',
+              '  try{window.indexedDB.open("__t__");}catch(e){var m={open:function(){var r={readyState:"pending"};setTimeout(function(){r.readyState="done";if(r.onerror)r.onerror({target:{error:{message:"IDB unavailable",name:"SecurityError"}}});},0);return r;},deleteDatabase:function(){var r={};setTimeout(function(){if(r.onsuccess)r.onsuccess({});},0);return r;},databases:function(){return Promise.resolve([]);}}; try{Object.defineProperty(window,"indexedDB",{value:m,writable:true});}catch(e2){window.indexedDB=m;}}',
+              '  try{var f=Element.prototype.requestFullscreen;Element.prototype.requestFullscreen=function(){try{return f.call(this);}catch(e){return Promise.resolve();}};}catch(e){}',
+              '})();',
+              '<\/script>'
+            ].join('');
+            html = html.replace('</head>', polyfill + '</head>');
+            var blob = new Blob([html], {type: 'text/html'});
+            var blobUrl = URL.createObjectURL(blob);
+            pc.innerHTML = '<iframe src="' + blobUrl + '" allow="fullscreen" style="width:100%;height:80vh;border:none;border-radius:10px;"></iframe>';
+          })
+          .catch(function(){ pc.innerHTML = '<div style="color:#f44;padding:40px">Failed to load GUST.</div>'; });
+      } else {
+        wrap.style.display = 'block';
+        document.getElementById('proxyFrame').src = val;
+      }
+    }
+
+    function openProxyTab() {
+      var val = document.getElementById('proxySelect').value;
+      var fetchUrl = val === 'skipschool' ? PROXY_PAGES.skipschool : (val.indexOf('GUST.html') !== -1 ? GUST_URL : null);
+      if (fetchUrl) {
+        var w = window.open('about:blank', '_blank');
+        if (!w) return;
+        fetch(fetchUrl)
+          .then(function(r){ return r.text(); })
+          .then(function(html){ w.document.open(); w.document.write(html); w.document.close(); });
+        return;
+      }
+      var w = window.open('', '_blank');
+      if (w) {
+        w.document.write('<!DOCTYPE html><html><head><style>*{margin:0;padding:0}html,body,iframe{width:100%;height:100%;border:none;overflow:hidden}</style></head><body><iframe src="' + val + '" allowfullscreen sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe></body></html>');
+        w.document.close();
+      }
+    }
+
     async function loadProxy(url) {
       /* live: prefix = open petezah live site in about:blank window (needs HTTPS + SW) */
       if (url.startsWith('live:')) {
@@ -251,8 +326,10 @@
         container.innerHTML =
           '<style>' +
           '.sigma{background:#141414;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:16px;margin-bottom:16px;width:100%}' +
-          '.proxy-wrap{position:relative;width:100%;height:80vh}' +
+          '.proxy-wrap{width:100%;height:80vh}' +
           '.proxy-wrap iframe{width:100%;height:100%;border:none;border-radius:10px}' +
+          '#skipschool-wrap{width:100%;height:80vh;overflow:auto;border-radius:10px;display:none}' +
+          '#skipschool-wrap .container,#skipschool-wrap .row,#skipschool-wrap .col-lg-12{padding:0!important;margin:0!important;max-width:100%!important}' +
           '.proxy-controls{display:flex;align-items:center;gap:10px;margin-bottom:12px}' +
           '.proxy-controls select{flex:1}' +
           '.open-btn{white-space:nowrap;background:#e91e63;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:15px;cursor:pointer}' +
@@ -260,14 +337,18 @@
           '</style>' +
           '<div class="container"><div class="row"><div class="col-lg-12">' +
           '<div class="proxy-controls">' +
-          '<select class="sigma" id="proxySelect" onchange="document.getElementById(\'proxyFrame\').src=this.value">' +
-          '<option value="https://petezah.netlify.app/static/index.html">PeteProxy</option>' +
-          '<option value="https://petezah.netlify.app/pages/proxy/p1.html">PeteProxy 2</option>' +
+          '<select class="sigma" id="proxySelect" onchange="switchProxy(this.value)">' +
+          '<option value="' + GUST_URL + '">GUST</option>' +
+          '<option value="https://petezah.netlify.app/pages/proxy/p1.html">PeteProxy</option>' +
+          '<option value="skipschool">Proxies List</option>' +
           '</select>' +
-          '<button class="open-btn" onclick="(function(){var u=document.getElementById(\'proxySelect\').value;var w=window.open(\'\',\'_blank\');if(w){w.document.write(\'<!DOCTYPE html><html><head><style>*{margin:0;padding:0}html,body,iframe{width:100%;height:100%;border:none;overflow:hidden}</style></head><body><iframe src=\\\'\'+u+\'\\\' allowfullscreen sandbox=\\\'allow-scripts allow-forms allow-same-origin allow-popups\\\'></iframe></body></html>\');w.document.close();}})()">Open in New Tab</button>' +
+          '<button class="open-btn" onclick="openProxyTab()">Open in New Tab</button>' +
           '</div>' +
-          '<div class="proxy-wrap"><iframe id="proxyFrame" src="https://petezah.netlify.app/static/index.html" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe></div>' +
+          '<div id="proxy-content" style="min-height:80vh;"></div>' +
+          '<div class="proxy-wrap" id="proxyWrap" style="display:none;"><iframe id="proxyFrame" src="" sandbox="allow-scripts allow-forms allow-popups allow-modals"></iframe></div>' +
+          '<div id="skipschool-wrap"></div>' +
           '</div></div></div>';
+        switchProxy(GUST_URL);
         return;
       }
 
