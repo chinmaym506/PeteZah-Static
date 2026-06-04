@@ -232,9 +232,12 @@
               '<\/script>'
             ].join('');
             html = html.replace('</head>', polyfill + '</head>');
-            var blob = new Blob([html], {type: 'text/html'});
-            var blobUrl = URL.createObjectURL(blob);
-            pc.innerHTML = '<iframe src="' + blobUrl + '" allow="fullscreen" style="width:100%;height:80vh;border:none;border-radius:10px;"></iframe>';
+            var iframe = document.createElement('iframe');
+            iframe.allow = 'fullscreen';
+            iframe.style.cssText = 'width:100%;height:80vh;border:none;border-radius:10px;';
+            pc.innerHTML = '';
+            pc.appendChild(iframe);
+            iframe.srcdoc = html;
           })
           .catch(function(){ pc.innerHTML = '<div style="color:#f44;padding:40px">Failed to load GUST.</div>'; });
       } else {
