@@ -188,6 +188,32 @@
 
     var GUST_URL = 'https://raw.githubusercontent.com/chinmaym506/PeteZah-Static/refs/heads/main/GUST.html';
 
+    function injectImgProxy(html) {
+      var script = [
+        '<script>(function(){',
+        '  var P="https://wsrv.nl/?url=";',
+        '  function fix(img){',
+        '    if(!img.src||img.src.indexOf("wsrv.nl")!==-1||img.src.startsWith("data:")||img.src.startsWith("blob:"))return;',
+        '    var o=img.src;',
+        '    img.onerror=function(){img.onerror=null;img.src=P+encodeURIComponent(o);};',
+        '  }',
+        '  function patch(doc){',
+        '    try{',
+        '      doc.querySelectorAll("img").forEach(fix);',
+        '      new MutationObserver(function(ms){ms.forEach(function(m){m.addedNodes.forEach(function(n){',
+        '        if(n.nodeType!==1)return;',
+        '        if(n.tagName==="IMG")fix(n);',
+        '        if(n.querySelectorAll)n.querySelectorAll("img").forEach(fix);',
+        '        if(n.tagName==="IFRAME"||n.tagName==="FRAME")n.addEventListener("load",function(){try{patch(n.contentDocument);}catch(e){}});',
+        '      });});}).observe(doc.documentElement||doc.body,{childList:true,subtree:true});',
+        '    }catch(e){}',
+        '  }',
+        '  patch(document);',
+        '})()\x3c/script>'
+      ].join('');
+      return html.replace('</head>', script + '</head>');
+    }
+
     function switchProxy(val) {
       var wrap = document.getElementById('proxyWrap');
       var ss = document.getElementById('skipschool-wrap');
@@ -221,6 +247,7 @@
         fetch(val)
           .then(function(r){ return r.text(); })
           .then(function(html){
+            html = injectImgProxy(html);
             var iframe = document.createElement('iframe');
             iframe.allow = 'fullscreen';
             iframe.style.cssText = 'width:100%;height:80vh;border:none;border-radius:10px;';
@@ -243,7 +270,7 @@
         if (!w) return;
         fetch(fetchUrl)
           .then(function(r){ return r.text(); })
-          .then(function(html){ w.document.open(); w.document.write(html); w.document.close(); });
+          .then(function(html){ html = injectImgProxy(html); w.document.open(); w.document.write(html); w.document.close(); });
         return;
       }
       var w = window.open('', '_blank');
