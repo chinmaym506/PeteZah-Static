@@ -221,17 +221,6 @@
         fetch(val)
           .then(function(r){ return r.text(); })
           .then(function(html){
-            var polyfill = [
-              '<script>',
-              '(function(){',
-              '  function memStore(){var s={};return{getItem:function(k){return s.hasOwnProperty(k)?s[k]:null;},setItem:function(k,v){s[k]=String(v);},removeItem:function(k){delete s[k];},clear:function(){s={};}};};',
-              '  try{localStorage.getItem("");}catch(e){try{Object.defineProperty(window,"localStorage",{value:memStore(),writable:true});Object.defineProperty(window,"sessionStorage",{value:memStore(),writable:true});}catch(e2){}}',
-              '  try{window.indexedDB.open("__t__");}catch(e){var m={open:function(){var r={readyState:"pending"};setTimeout(function(){r.readyState="done";if(r.onerror)r.onerror({target:{error:{message:"IDB unavailable",name:"SecurityError"}}});},0);return r;},deleteDatabase:function(){var r={};setTimeout(function(){if(r.onsuccess)r.onsuccess({});},0);return r;},databases:function(){return Promise.resolve([]);}}; try{Object.defineProperty(window,"indexedDB",{value:m,writable:true});}catch(e2){window.indexedDB=m;}}',
-              '  try{var f=Element.prototype.requestFullscreen;Element.prototype.requestFullscreen=function(){try{return f.call(this);}catch(e){return Promise.resolve();}};}catch(e){}',
-              '})();',
-              '<\/script>'
-            ].join('');
-            html = html.replace('</head>', polyfill + '</head>');
             var iframe = document.createElement('iframe');
             iframe.allow = 'fullscreen';
             iframe.style.cssText = 'width:100%;height:80vh;border:none;border-radius:10px;';
